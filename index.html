@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diamond Tutors</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:     #09090E;
+  --bg2:    #0F0F16;
+  --bg3:    #16161F;
+  --bg4:    #1C1C27;
+  --border: rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --gold:   #C9A84C;
+  --gold2:  #E2C06A;
+  --gold-dim:rgba(201,168,76,0.11);
+  --gold-border:rgba(201,168,76,0.22);
+  --text:   #EDEAE2;
+  --text2:  #8E8D9E;
+  --text3:  #4E4D5E;
+  --white:  #FFFFFF;
+  --green:  #4A9B7F;
+  --blue:   #4A7FD4;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:rgba(9,9,14,0.9);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--text);letter-spacing:0.01em;
+}
+.nav-logo em{font-style:normal;color:var(--gold);}
+.nav-links{display:flex;align-items:center;gap:0.05rem;list-style:none;}
+.nav-links a{
+  text-decoration:none;color:var(--text2);font-size:0.8rem;font-weight:500;
+  padding:0.38rem 0.75rem;border-radius:5px;transition:color 0.18s;
+}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{
+  background:var(--gold)!important;color:#09090E!important;
+  font-weight:700!important;border-radius:6px!important;
+  padding:0.4rem 1rem!important;
+}
+.nav-cta:hover{opacity:0.88!important;}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:160px 2rem 130px;
+  position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;border-radius:50%;pointer-events:none;filter:blur(130px);
+}
+.g1{width:700px;height:500px;background:var(--gold);opacity:0.07;top:-180px;left:50%;transform:translateX(-50%);}
+.g2{width:400px;height:400px;background:var(--blue);opacity:0.06;bottom:-100px;left:-80px;}
+
+.hero-label{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold-border);
+  padding:0.3rem 0.9rem;border-radius:999px;margin-bottom:2rem;
+}
+
+#hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,6.5vw,5.5rem);font-weight:700;
+  color:var(--white);letter-spacing:-0.025em;line-height:1.08;
+  margin-bottom:1.5rem;
+}
+#hero h1 em{font-style:italic;color:var(--gold);}
+
+.hero-sub{
+  font-size:1.05rem;color:var(--text2);max-width:480px;
+  margin:0 auto 2rem;line-height:1.72;font-weight:400;
+}
+
+.badge-row{
+  display:flex;flex-wrap:wrap;gap:0.45rem;justify-content:center;margin-bottom:2.5rem;
+}
+.badge{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.04em;
+  color:var(--gold);background:var(--gold-dim);
+  border:1px solid var(--gold-border);
+  padding:0.3rem 0.8rem;border-radius:5px;
+}
+.badge::before{content:"✦  ";}
+
+.hero-btns{display:flex;gap:0.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:4.5rem;}
+
+.btn-primary{
+  background:var(--gold);color:#09090E;font-weight:700;font-size:0.88rem;
+  padding:0.78rem 1.8rem;border-radius:7px;text-decoration:none;
+  transition:opacity 0.18s;letter-spacing:0.01em;
+}
+.btn-primary:hover{opacity:0.87;}
+
+.btn-outline{
+  background:transparent;color:var(--text);font-weight:500;font-size:0.88rem;
+  padding:0.78rem 1.8rem;border-radius:7px;
+  border:1px solid var(--border2);text-decoration:none;
+  transition:background 0.18s,border-color 0.18s;
+}
+.btn-outline:hover{background:var(--bg3);border-color:rgba(255,255,255,0.2);}
+
+.subject-strip{
+  display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;max-width:680px;
+}
+.strip-pill{
+  font-size:0.74rem;font-weight:500;color:var(--text2);
+  background:var(--bg3);border:1px solid var(--border);
+  padding:0.26rem 0.65rem;border-radius:4px;
+}
+
+/* ── SECTION SHELL ── */
+.section{padding:110px 2rem;display:flex;flex-direction:column;align-items:center;}
+.section-inner{width:100%;max-width:900px;}
+
+.overline{
+  font-size:0.67rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.65rem;
+}
+
+h2.heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:700;
+  color:var(--white);letter-spacing:-0.02em;line-height:1.18;
+  margin-bottom:0.7rem;
+}
+
+.subheading{font-size:0.93rem;color:var(--text2);max-width:480px;line-height:1.7;margin-bottom:3.5rem;}
+
+/* ── DIVIDER ── */
+.rule{width:100%;height:1px;background:var(--border);margin:0;}
+
+/* ── WHY US ── */
+#why{background:var(--bg2);}
+
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+.why-item{background:var(--bg2);padding:2rem 1.75rem;}
+.why-item-label{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.55rem;
+}
+.why-item h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:0.45rem;line-height:1.3;
+}
+.why-item p{font-size:0.83rem;color:var(--text2);line-height:1.65;}
+
+/* ── TUTORS ── */
+#tutors{background:var(--bg);}
+
+.tutors-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+
+.tutor-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:12px;padding:2rem;position:relative;overflow:hidden;
+}
+.tutor-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+}
+.tutor-card.dao::before{background:linear-gradient(90deg,var(--green),var(--blue));}
+.tutor-card.lawrence::before{background:linear-gradient(90deg,var(--gold),#D4884A);}
+
+.tutor-monogram{
+  width:52px;height:52px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);
+  margin-bottom:1.1rem;
+}
+.dao .tutor-monogram{background:linear-gradient(135deg,var(--green),var(--blue));}
+.lawrence .tutor-monogram{background:linear-gradient(135deg,var(--gold),#D4884A);}
+
+.tutor-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:0.12rem;
+}
+.tutor-school{font-size:0.72rem;color:var(--text3);margin-bottom:0.9rem;font-weight:500;}
+.tutor-bio{font-size:0.83rem;color:var(--text2);line-height:1.65;margin-bottom:1.1rem;}
+
+.tutor-pills{display:flex;flex-wrap:wrap;gap:0.3rem;}
+.pill{
+  font-size:0.69rem;font-weight:500;
+  padding:0.18rem 0.52rem;border-radius:4px;
+  border:1px solid var(--border2);color:var(--text2);background:var(--bg4);
+}
+
+/* ── HOW IT WORKS ── */
+#how{background:var(--bg2);}
+
+.steps{display:flex;flex-direction:column;}
+.step{display:grid;grid-template-columns:64px 1fr;gap:0;padding-bottom:0;}
+
+.step-aside{
+  display:flex;flex-direction:column;align-items:center;padding-top:0.1rem;
+}
+.step-num-wrap{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;
+  color:var(--gold);border:1px solid var(--gold-border);background:var(--gold-dim);
+  flex-shrink:0;position:relative;z-index:1;
+}
+.step-connector{width:1px;flex:1;background:var(--border);margin-top:8px;min-height:48px;}
+.step:last-child .step-connector{display:none;}
+
+.step-body{padding:0.1rem 0 2.75rem 0.5rem;}
+.step-tag{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--text3);display:block;margin-bottom:0.35rem;
+}
+.step-body h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;
+}
+.step-body p{font-size:0.85rem;color:var(--text2);max-width:500px;line-height:1.65;}
+
+/* ── COURSES ── */
+#courses{background:var(--bg);}
+
+.course-section{margin-bottom:2.5rem;}
+.course-section:last-child{margin-bottom:0;}
+
+.course-section-label{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;
+  color:var(--text3);padding-bottom:0.6rem;margin-bottom:0.85rem;
+  border-bottom:1px solid var(--border);display:block;
+}
+
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.45rem;}
+
+.course-tile{
+  background:var(--bg2);border:1px solid var(--border);border-radius:7px;
+  padding:0.75rem 0.9rem;font-size:0.82rem;font-weight:500;color:var(--text);
+  transition:border-color 0.18s,background 0.18s;line-height:1.3;
+}
+.course-tile:hover{border-color:var(--border2);background:var(--bg3);}
+.course-tile .lvl{font-size:0.67rem;color:var(--text3);margin-top:0.15rem;font-weight:400;}
+
+/* ── TEST PREP ── */
+#testprep{background:var(--bg2);}
+
+.test-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;margin-bottom:1.25rem;
+}
+.test-item{background:var(--bg3);padding:1.6rem 1.75rem;}
+.test-item h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;
+}
+.test-item p{font-size:0.82rem;color:var(--text2);line-height:1.62;}
+
+.info-box{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;padding:1rem 1.25rem;
+  font-size:0.8rem;color:var(--text2);line-height:1.65;
+}
+
+/* ── CONSULTATION ── */
+#consult{
+  background:var(--bg2);padding:100px 2rem;
+  display:flex;flex-direction:column;align-items:center;
+  border-top:1px solid var(--border);
+}
+
+.consult-wrap{
+  width:100%;max-width:560px;text-align:center;
+}
+
+.consult-wrap h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  color:var(--white);letter-spacing:-0.02em;margin-bottom:1rem;line-height:1.15;
+}
+
+.consult-wrap p{font-size:0.93rem;color:var(--text2);margin-bottom:2.25rem;line-height:1.72;}
+
+.consult-email-btn{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  background:var(--gold);color:#09090E;
+  font-weight:700;font-size:0.9rem;letter-spacing:0.01em;
+  padding:0.88rem 2.25rem;border-radius:8px;
+  text-decoration:none;transition:opacity 0.18s;
+  margin-bottom:1.1rem;
+}
+.consult-email-btn:hover{opacity:0.87;}
+
+.consult-footnotes{
+  display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+}
+.consult-footnote{
+  font-size:0.74rem;color:var(--text3);
+  display:flex;align-items:center;gap:0.35rem;
+}
+.consult-footnote::before{content:"◎";color:var(--gold);font-size:0.7rem;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:2rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text2);
+}
+.footer-logo em{font-style:normal;color:var(--gold);}
+.footer-links{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{text-decoration:none;font-size:0.76rem;color:var(--text3);transition:color 0.18s;}
+.footer-links a:hover{color:var(--text2);}
+.footer-copy{font-size:0.73rem;color:var(--text3);}
+
+/* ── FORM ── */
+.consult-form{
+  text-align:left;margin-bottom:1.75rem;
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:12px;padding:1.75rem;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;}
+.form-group{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.85rem;}
+.form-group:last-of-type{margin-bottom:1.25rem;}
+.form-label{font-size:0.72rem;font-weight:600;letter-spacing:0.05em;color:var(--text2);text-transform:uppercase;}
+.form-input{
+  background:var(--bg4);border:1px solid var(--border2);
+  border-radius:7px;padding:0.65rem 0.85rem;
+  font-size:0.85rem;color:var(--text);font-family:'Inter',sans-serif;
+  outline:none;transition:border-color 0.18s;width:100%;
+}
+.form-input::placeholder{color:var(--text3);}
+.form-input:focus{border-color:var(--gold);}
+.form-textarea{resize:vertical;min-height:90px;}
+.form-submit{
+  width:100%;background:var(--gold);color:#09090E;
+  font-weight:700;font-size:0.88rem;letter-spacing:0.01em;
+  padding:0.82rem;border-radius:7px;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:opacity 0.18s;
+}
+.form-submit:hover{opacity:0.87;}
+.diamond-bg {
+  position: absolute;
+  width: 620px; height: 570px;
+  top: 48%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+#hero > *:not(.hero-glow):not(.diamond-bg) { position: relative; z-index: 1; }
+
+@media(max-width:520px){.form-row{grid-template-columns:1fr;}}
+
+@media(max-width:720px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .section{padding:80px 1.25rem;}
+  #hero{padding:110px 1.25rem 70px;}
+  .why-grid{grid-template-columns:1fr;}
+  .tutors-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;align-items:flex-start;padding:1.5rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Diamond Tutors</div>
+  <ul class="nav-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#tutors">Tutors</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#testprep">Test Prep</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#consult" class="nav-cta">Book Free Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+
+  <!-- Diamond background -->
+  <svg class="diamond-bg" viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="rgba(201,168,76,0.15)" stroke-width="1.5" fill="none" stroke-linejoin="round">
+      <!-- Outer shape: flat top, wide sides, pointed bottom -->
+      <polygon points="145,30 355,30 490,185 250,445 10,185"/>
+      <!-- Table: sits inside, below the outer top edge -->
+      <polygon points="190,75 310,75 375,130 125,130"/>
+      <!-- Crown: outer top corners to table corners -->
+      <line x1="145" y1="30"  x2="125" y2="130"/>
+      <line x1="355" y1="30"  x2="375" y2="130"/>
+      <!-- Crown: outer top corners to table top inner corners -->
+      <line x1="145" y1="30"  x2="190" y2="75"/>
+      <line x1="355" y1="30"  x2="310" y2="75"/>
+      <!-- Girdle -->
+      <line x1="10"  y1="185" x2="490" y2="185"/>
+      <!-- Crown: table corners to girdle edges -->
+      <line x1="125" y1="130" x2="10"  y2="185"/>
+      <line x1="375" y1="130" x2="490" y2="185"/>
+      <!-- Crown: table corners to girdle center -->
+      <line x1="125" y1="130" x2="250" y2="185"/>
+      <line x1="375" y1="130" x2="250" y2="185"/>
+      <!-- Pavilion: outer to point -->
+      <line x1="10"  y1="185" x2="250" y2="445"/>
+      <line x1="490" y1="185" x2="250" y2="445"/>
+      <!-- Pavilion: inner facets -->
+      <line x1="125" y1="185" x2="250" y2="445"/>
+      <line x1="375" y1="185" x2="250" y2="445"/>
+      <line x1="250" y1="185" x2="250" y2="445"/>
+    </g>
+  </svg>
+
+  <div class="hero-label">LA-based · Zoom · High School</div>
+
+  <h1>One-on-one tutoring.<br/><em>Built for results.</em></h1>
+
+  <p class="hero-sub">We don't sell hour blocks. We identify exactly where you're losing points, match you with the right tutor, and build a focused plan to get you there.</p>
+
+  <div class="badge-row">
+    <span class="badge">National Merit Finalist</span>
+    <span class="badge">1550+ SAT</span>
+    <span class="badge">Perfect ACT (36)</span>
+    <span class="badge">Top 1% PSAT</span>
+    <span class="badge">5s on All AP Courses</span>
+  </div>
+
+  <div class="hero-btns">
+    <a href="#consult" class="btn-primary">Book Free Consultation</a>
+    <a href="#how" class="btn-outline">See How It Works</a>
+  </div>
+
+  <div class="subject-strip">
+    <span class="strip-pill">SAT / ACT / PSAT</span>
+    <span class="strip-pill">AP Chemistry</span>
+    <span class="strip-pill">AP Calculus</span>
+    <span class="strip-pill">AP Biology</span>
+    <span class="strip-pill">AP Physics</span>
+    <span class="strip-pill">AP Statistics</span>
+    <span class="strip-pill">AP US History</span>
+    <span class="strip-pill">IB HL Math</span>
+    <span class="strip-pill">AP Econ</span>
+    <span class="strip-pill">& more</span>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- WHY US -->
+<section class="section" id="why">
+  <div class="section-inner">
+    <div class="overline">Why Diamond Tutors</div>
+    <h2 class="heading">Built for students who want results.</h2>
+    <p class="subheading">A boutique tutoring practice run by two college students who've taken — and aced — the exact courses and exams you're preparing for.</p>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-item-label">Approach</div>
+        <h3>Personalized to you</h3>
+        <p>Every session targets your specific gaps — not a generic curriculum or a prepackaged study plan.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-label">Format</div>
+        <h3>Flexible Zoom sessions</h3>
+        <p>All sessions via Zoom. Weekly or bi-weekly, scheduled around your calendar. No commute.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-label">Commitment</div>
+        <h3>No lock-in</h3>
+        <p>Pay per session via Zelle. No packages, no monthly fees. Pause or stop with 24-hour notice.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-label">Tracking</div>
+        <h3>Progress-first</h3>
+        <p>We track session-by-session improvement and adjust the approach until you're hitting the scores you need.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-label">Consistency</div>
+        <h3>One tutor, start to finish</h3>
+        <p>You work with one tutor throughout — no rotating roster, no re-explaining your situation every session.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-label">Rate</div>
+        <h3>$50 per hour</h3>
+        <p>Flat rate, no hidden fees. The consultation is always free — no commitment until you're confident it's the right fit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- TUTORS -->
+<section class="section" id="tutors">
+  <div class="section-inner">
+    <div class="overline">Our Tutors</div>
+    <h2 class="heading">Meet the team.</h2>
+    <p class="subheading">A UCLA and USC tutor team — verified top scorers who've sat the same exams and taken the same courses you're in right now.</p>
+
+    <div class="tutors-grid">
+      <div class="tutor-card dao">
+        <div class="tutor-monogram">D</div>
+        <h3>Dao Lam</h3>
+        <div class="tutor-school">UCLA · Molecular, Cell & Developmental Biology</div>
+        <p class="tutor-bio">Valedictorian and Molecular, Cell &amp; Developmental Biology student at UCLA with a 1500 SAT. Scored a 5 on every AP course taught. Specializes in making chemistry and biology accessible — breaking down dense material into frameworks that actually stick.</p>
+        <div class="tutor-pills">
+          <span class="pill">AP Chemistry</span>
+          <span class="pill">AP Biology</span>
+          <span class="pill">AP Statistics</span>
+          <span class="pill">SAT · PSAT</span>
+          <span class="pill">AP United States History</span>
+          <span class="pill">AP Euro</span>
+          <span class="pill">AP Econ</span>
+          <span class="pill">Biotech</span>
+        </div>
+      </div>
+
+      <div class="tutor-card lawrence">
+        <div class="tutor-monogram">L</div>
+        <h3>Lawrence Park</h3>
+        <div class="tutor-school">USC Marshall School of Business · Accounting & Finance</div>
+        <p class="tutor-bio">Incoming USC Marshall School of Business student, National Merit Finalist, with a 1560 SAT, perfect 36 ACT, and top 1% PSAT. Scored a 5 on every AP course taught. Deep command of advanced math and physics — known for turning abstract calculus and mechanics into repeatable, logical steps.</p>
+        <div class="tutor-pills">
+          <span class="pill">SAT · ACT · PSAT</span>
+          <span class="pill">AP Calc AB & BC</span>
+          <span class="pill">AP Physics 1</span>
+          <span class="pill">IB HL Math</span>
+          <span class="pill">IB HL Physics</span>
+          <span class="pill">AP Precalculus</span>
+          <span class="pill">A2TH · MACH5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="overline">The Process</div>
+    <h2 class="heading">How it works.</h2>
+    <p class="subheading">Five steps from your first form submission to measurable progress.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-aside">
+          <div class="step-num-wrap">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <span class="step-tag">Free · No commitment</span>
+          <h3>Fill out the consultation form</h3>
+          <p>Submit your name, contact info, subject, grade level, and what you're working toward. Takes under a minute.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-aside">
+          <div class="step-num-wrap">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <span class="step-tag">Within 24 hours</span>
+          <h3>We reach out</h3>
+          <p>We review your submission and contact you to schedule a free intro call — no obligation, no pressure.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-aside">
+          <div class="step-num-wrap">3</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <span class="step-tag">Free · 15 minutes</span>
+          <h3>Intro call</h3>
+          <p>We review your timeline, current standing, and target. You get matched with the right tutor and walk away with a clear plan before spending anything.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-aside">
+          <div class="step-num-wrap">4</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <span class="step-tag">First paid session</span>
+          <h3>Diagnostic session</h3>
+          <p>We pinpoint exactly where you're losing points and build a focused plan — no wasted sessions on material you already know.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-aside">
+          <div class="step-num-wrap">5</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <span class="step-tag">Ongoing</span>
+          <h3>Weekly sessions</h3>
+          <p>One-on-one via Zoom, tied directly to your upcoming exams. We adjust the approach every session until you're hitting your target.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- TEST PREP -->
+<section class="section" id="testprep">
+  <div class="section-inner">
+    <div class="overline">Standardized Testing</div>
+    <h2 class="heading">Test prep from tutors who've scored in the top 1%.</h2>
+    <p class="subheading">We cover content mastery and exam-specific technique — not just practice problems.</p>
+
+    <div class="test-grid">
+      <div class="test-item">
+        <h3>SAT</h3>
+        <p>Full prep across Math and Reading & Writing. We identify exactly where you're losing points and drill those sections until they're strengths.</p>
+      </div>
+      <div class="test-item">
+        <h3>ACT</h3>
+        <p>All four sections — English, Math, Reading, and Science. Strong emphasis on timing and pacing, where most students leave the most points behind.</p>
+      </div>
+      <div class="test-item">
+        <h3>PSAT / National Merit</h3>
+        <p>Full PSAT suite prep including PSAT/NMSQT. Targeting National Merit cutoffs for students pursuing scholarship recognition.</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      Not sure whether to take the SAT or ACT? We'll help you decide on the intro call — the right test depends on your individual strengths, and choosing correctly can make a meaningful difference in your final score.
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- COURSES -->
+<section class="section" id="courses">
+  <div class="section-inner">
+    <div class="overline">Subject Tutoring</div>
+    <h2 class="heading">Course offerings.</h2>
+    <p class="subheading">AP and IB coursework across math, science, and humanities — every subject taught by a tutor who's taken and aced it.</p>
+
+    <div class="course-section">
+      <span class="course-section-label">Math</span>
+      <div class="courses-grid">
+        <div class="course-tile">Algebra II / Trigonometry Honors<div class="lvl">Honors</div></div>
+        <div class="course-tile">Math Analysis / Calculus Honors<div class="lvl">Honors</div></div>
+        <div class="course-tile">AP Precalculus<div class="lvl">AP</div></div>
+        <div class="course-tile">AP Calculus AB<div class="lvl">AP</div></div>
+        <div class="course-tile">AP Calculus BC<div class="lvl">AP</div></div>
+        <div class="course-tile">AP Statistics<div class="lvl">AP</div></div>
+        <div class="course-tile">IB HL Mathematics<div class="lvl">IB Higher Level</div></div>
+      </div>
+    </div>
+
+    <div class="course-section">
+      <span class="course-section-label">Physics</span>
+      <div class="courses-grid">
+        <div class="course-tile">AP Physics 1<div class="lvl">AP</div></div>
+        <div class="course-tile">IB HL Physics<div class="lvl">IB Higher Level</div></div>
+      </div>
+    </div>
+
+    <div class="course-section">
+      <span class="course-section-label">Chemistry</span>
+      <div class="courses-grid">
+        <div class="course-tile">Pre-AP Chemistry<div class="lvl">Pre-AP</div></div>
+        <div class="course-tile">AP Chemistry<div class="lvl">AP</div></div>
+      </div>
+    </div>
+
+    <div class="course-section">
+      <span class="course-section-label">Biology</span>
+      <div class="courses-grid">
+        <div class="course-tile">Pre-AP Biology<div class="lvl">Pre-AP</div></div>
+        <div class="course-tile">AP Biology<div class="lvl">AP</div></div>
+        <div class="course-tile">Biotechnology<div class="lvl">Elective</div></div>
+      </div>
+    </div>
+
+    <div class="course-section">
+      <span class="course-section-label">History & Social Science</span>
+      <div class="courses-grid">
+        <div class="course-tile">AP United States History<div class="lvl">AP</div></div>
+        <div class="course-tile">AP European History<div class="lvl">AP</div></div>
+        <div class="course-tile">AP Microeconomics<div class="lvl">AP</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CONSULTATION -->
+<section id="consult">
+  <div class="consult-wrap">
+    <div class="overline" style="text-align:center;margin-bottom:0.65rem;">Get Started</div>
+    <h2>Book your free consultation.</h2>
+    <p>Fill out the form below and we'll get back to you within 24 hours to schedule a free intro call — no commitment required.</p>
+
+    <div class="consult-form">
+      <form action="https://formspree.io/f/xkolqlav" method="POST" onsubmit="handleFormSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="name" class="form-input" placeholder="Your name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" name="phone" class="form-input" placeholder="(xxx) xxx-xxxx"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-input" placeholder="you@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">What type of tutoring are you looking for?</label>
+          <textarea name="tutoring_request" class="form-input form-textarea" placeholder="e.g. AP Chemistry help for an 11th grader aiming for a 5, struggling with equilibrium and electrochemistry" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New Tutoring Consultation Request — Diamond Tutors"/>
+        <button type="submit" class="form-submit">Request Free Consultation</button>
+        <div id="form-msg" style="display:none;margin-top:1rem;font-size:0.82rem;text-align:center;"></div>
+      </form>
+    </div>
+
+    <div class="consult-footnotes">
+      <span class="consult-footnote">Free 15-min intro call</span>
+      <span class="consult-footnote">No obligation</span>
+      <span class="consult-footnote">Response within 24 hrs</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Diamond Tutors</div>
+  <ul class="footer-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#tutors">Tutors</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#testprep">Test Prep</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#consult">Book a Consultation</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Diamond Tutors · Los Angeles, CA</span>
+</footer>
+
+<script>
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const msg = document.getElementById('form-msg');
+  const btn = form.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      msg.style.display = 'block';
+      msg.style.color = 'var(--gold)';
+      msg.textContent = "We got your request — expect a response within 24 hours.";
+      form.reset();
+      btn.textContent = 'Sent';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    msg.style.display = 'block';
+    msg.style.color = '#E27A7A';
+    msg.textContent = 'Something went wrong. Email us directly at diamondtutorsca@gmail.com';
+    btn.textContent = 'Request Free Consultation';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
