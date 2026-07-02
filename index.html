@@ -402,33 +402,33 @@ footer{
   <div class="hero-glow g2"></div>
 
   <!-- Diamond background -->
-  <svg class="diamond-bg" viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+  <svg class="diamond-bg" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
     <g stroke="rgba(201,168,76,0.15)" stroke-width="1.5" fill="none" stroke-linejoin="round">
-      <!-- Outer shape: flat top, wide sides, pointed bottom -->
-      <polygon points="145,30 355,30 490,185 250,445 10,185"/>
-      <!-- Table: sits inside, below the outer top edge -->
-      <polygon points="190,75 310,75 375,130 125,130"/>
-      <!-- Crown: outer top corners to table corners -->
-      <line x1="145" y1="30"  x2="125" y2="130"/>
-      <line x1="355" y1="30"  x2="375" y2="130"/>
-      <!-- Crown: outer top corners to table top inner corners -->
-      <line x1="145" y1="30"  x2="190" y2="75"/>
-      <line x1="355" y1="30"  x2="310" y2="75"/>
+      <!-- Outer shape -->
+      <polygon points="155,40 345,40 490,185 250,415 10,185"/>
+      <!-- Table bar -->
+      <line x1="195" y1="40" x2="305" y2="40"/>
+      <!-- Left outer triangle: outer-left → left-girdle, with top bar -->
+      <line x1="155" y1="40" x2="10"  y2="185"/>
+      <!-- Right outer triangle: outer-right → right-girdle -->
+      <line x1="345" y1="40" x2="490" y2="185"/>
+      <!-- Table-left → left-inner-girdle -->
+      <line x1="195" y1="40" x2="130" y2="185"/>
+      <!-- Table-right → right-inner-girdle -->
+      <line x1="305" y1="40" x2="370" y2="185"/>
+      <!-- Table-left → center-girdle -->
+      <line x1="195" y1="40" x2="250" y2="185"/>
+      <!-- Table-right → center-girdle -->
+      <line x1="305" y1="40" x2="250" y2="185"/>
       <!-- Girdle -->
       <line x1="10"  y1="185" x2="490" y2="185"/>
-      <!-- Crown: table corners to girdle edges -->
-      <line x1="125" y1="130" x2="10"  y2="185"/>
-      <line x1="375" y1="130" x2="490" y2="185"/>
-      <!-- Crown: table corners to girdle center -->
-      <line x1="125" y1="130" x2="250" y2="185"/>
-      <line x1="375" y1="130" x2="250" y2="185"/>
-      <!-- Pavilion: outer to point -->
-      <line x1="10"  y1="185" x2="250" y2="445"/>
-      <line x1="490" y1="185" x2="250" y2="445"/>
-      <!-- Pavilion: inner facets -->
-      <line x1="125" y1="185" x2="250" y2="445"/>
-      <line x1="375" y1="185" x2="250" y2="445"/>
-      <line x1="250" y1="185" x2="250" y2="445"/>
+      <!-- Pavilion outer -->
+      <line x1="10"  y1="185" x2="250" y2="415"/>
+      <line x1="490" y1="185" x2="250" y2="415"/>
+      <!-- Pavilion inner -->
+      <line x1="130" y1="185" x2="250" y2="415"/>
+      <line x1="370" y1="185" x2="250" y2="415"/>
+      <line x1="250" y1="185" x2="250" y2="415"/>
     </g>
   </svg>
 
