@@ -189,6 +189,14 @@ h2.heading{
 }
 .dao .tutor-monogram{background:linear-gradient(135deg,var(--green),var(--blue));}
 .lawrence .tutor-monogram{background:linear-gradient(135deg,var(--gold),#D4884A);}
+.tutor-photo{
+  width:100%;height:auto;border-radius:12px;
+  object-fit:contain;
+  margin-bottom:1.25rem;
+  border:1px solid var(--border2);
+  display:block;
+  background:var(--bg4);
+}
 
 .tutor-card h3{
   font-family:'Playfair Display',serif;
@@ -406,22 +414,26 @@ footer{
     <g stroke="rgba(201,168,76,0.15)" stroke-width="1.5" fill="none" stroke-linejoin="round">
       <!-- Outer shape -->
       <polygon points="155,40 345,40 490,185 250,415 10,185"/>
-      <!-- Table bar -->
+      <!-- Table top bar -->
       <line x1="195" y1="40" x2="305" y2="40"/>
-      <!-- Left outer triangle: outer-left → left-girdle, with top bar -->
+      <!-- Left trapezoid bottom: outer-left-corner → left-inner-girdle -->
       <line x1="155" y1="40" x2="10"  y2="185"/>
-      <!-- Right outer triangle: outer-right → right-girdle -->
-      <line x1="345" y1="40" x2="490" y2="185"/>
-      <!-- Table-left → left-inner-girdle -->
+      <!-- Left trapezoid right side: table-left → left-inner-girdle -->
       <line x1="195" y1="40" x2="130" y2="185"/>
-      <!-- Table-right → right-inner-girdle -->
+      <!-- Left trapezoid bottom bar -->
+      <line x1="10"  y1="185" x2="130" y2="185"/>
+      <!-- Right trapezoid: outer-right → right-inner-girdle -->
+      <line x1="345" y1="40" x2="490" y2="185"/>
+      <!-- Right trapezoid left side: table-right → right-inner-girdle -->
       <line x1="305" y1="40" x2="370" y2="185"/>
-      <!-- Table-left → center-girdle -->
-      <line x1="195" y1="40" x2="250" y2="185"/>
-      <!-- Table-right → center-girdle -->
-      <line x1="305" y1="40" x2="250" y2="185"/>
-      <!-- Girdle -->
-      <line x1="10"  y1="185" x2="490" y2="185"/>
+      <!-- Right trapezoid bottom bar -->
+      <line x1="370" y1="185" x2="490" y2="185"/>
+      <!-- Center-left triangle: table-left + left-inner-girdle → center-girdle -->
+      <line x1="195" y1="40"  x2="250" y2="185"/>
+      <line x1="130" y1="185" x2="250" y2="185"/>
+      <!-- Center-right triangle: table-right + right-inner-girdle → center-girdle -->
+      <line x1="305" y1="40"  x2="250" y2="185"/>
+      <line x1="370" y1="185" x2="250" y2="185"/>
       <!-- Pavilion outer -->
       <line x1="10"  y1="185" x2="250" y2="415"/>
       <line x1="490" y1="185" x2="250" y2="415"/>
@@ -520,7 +532,7 @@ footer{
 
     <div class="tutors-grid">
       <div class="tutor-card dao">
-        <div class="tutor-monogram">D</div>
+        <img src="https://raw.githubusercontent.com/diamondtutorsca-prog/diamond-tutors/main/dao.png" alt="Dao Lam" class="tutor-photo"/>
         <h3>Dao Lam</h3>
         <div class="tutor-school">UCLA · Molecular, Cell & Developmental Biology</div>
         <p class="tutor-bio">Valedictorian and Molecular, Cell &amp; Developmental Biology student at UCLA with a 1500 SAT. Scored a 5 on every AP course taught. Specializes in making chemistry and biology accessible — breaking down dense material into frameworks that actually stick.</p>
@@ -537,7 +549,7 @@ footer{
       </div>
 
       <div class="tutor-card lawrence">
-        <div class="tutor-monogram">L</div>
+        <img src="https://raw.githubusercontent.com/diamondtutorsca-prog/diamond-tutors/main/lawrence.JPG" alt="Lawrence Park" class="tutor-photo"/>
         <h3>Lawrence Park</h3>
         <div class="tutor-school">USC Marshall School of Business · Accounting & Finance</div>
         <p class="tutor-bio">Incoming USC Marshall School of Business student, National Merit Finalist, with a 1560 SAT, perfect 36 ACT, and top 1% PSAT. Scored a 5 on every AP course taught. Deep command of advanced math and physics — known for turning abstract calculus and mechanics into repeatable, logical steps.</p>
