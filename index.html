@@ -357,7 +357,16 @@ footer{
 .form-input::placeholder{color:var(--text3);}
 .form-input:focus{border-color:var(--gold);}
 .form-textarea{resize:vertical;min-height:90px;}
-.form-submit{
+.form-select{
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239998A8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 0.85rem center;
+  cursor:pointer;
+}
+.form-select option{background:var(--bg4);color:var(--text);}
+.form-select optgroup{background:var(--bg3);color:var(--text3);font-size:0.75rem;}
+
   width:100%;background:var(--gold);color:#09090E;
   font-weight:700;font-size:0.88rem;letter-spacing:0.01em;
   padding:0.82rem;border-radius:7px;border:none;cursor:pointer;
@@ -754,8 +763,47 @@ footer{
           <input type="email" name="email" class="form-input" placeholder="you@email.com" required/>
         </div>
         <div class="form-group">
-          <label class="form-label">What type of tutoring are you looking for?</label>
-          <textarea name="tutoring_request" class="form-input form-textarea" placeholder="e.g. AP Chemistry help for an 11th grader aiming for a 5, struggling with equilibrium and electrochemistry" required></textarea>
+          <label class="form-label">Subject Needed</label>
+          <select name="subject" class="form-input form-select" required>
+            <option value="" disabled selected>Select a subject...</option>
+            <optgroup label="Standardized Testing">
+              <option>SAT</option>
+              <option>ACT</option>
+              <option>PSAT / National Merit</option>
+            </optgroup>
+            <optgroup label="Math">
+              <option>Algebra II / Trigonometry Honors</option>
+              <option>Math Analysis / Calculus Honors (MACH5)</option>
+              <option>AP Precalculus</option>
+              <option>AP Calculus AB</option>
+              <option>AP Calculus BC</option>
+              <option>AP Statistics</option>
+              <option>IB HL Mathematics</option>
+            </optgroup>
+            <optgroup label="Physics">
+              <option>AP Physics 1</option>
+              <option>IB HL Physics</option>
+            </optgroup>
+            <optgroup label="Chemistry">
+              <option>Pre-AP Chemistry</option>
+              <option>AP Chemistry</option>
+            </optgroup>
+            <optgroup label="Biology">
+              <option>Pre-AP Biology</option>
+              <option>AP Biology</option>
+              <option>Biotechnology</option>
+            </optgroup>
+            <optgroup label="History & Social Science">
+              <option>AP United States History</option>
+              <option>AP European History</option>
+              <option>AP Microeconomics</option>
+            </optgroup>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Anything else we should know?</label>
+          <textarea name="notes" class="form-input form-textarea" placeholder="e.g. Grade level, current struggles, upcoming exam dates..."></textarea>
         </div>
         <input type="hidden" name="_subject" value="New Tutoring Consultation Request — Diamond Tutors"/>
         <button type="submit" class="form-submit">Request Free Consultation</button>
